@@ -136,10 +136,7 @@ public class CouponSteps extends CouponLocators {
         } else if (value == "2X") {
             coefficientType.shouldHave(text("Двойной шанс 2Х"));
 
-        } else if (value == "Б") {
-            coefficientType.shouldHave(text("Тотал"));
-
-        } else if (value == "М") {
+        } else if (value == "Б" || value == "М") {
             coefficientType.shouldHave(text("Тотал"));
 
         } else if (value == "Фора1") {
@@ -148,10 +145,7 @@ public class CouponSteps extends CouponLocators {
         } else if (value == "Фора2") {
             coefficientType.shouldHave(text("Фора 2"));
 
-        } else if (value == "БИТ1") {
-            coefficientType.shouldHave(text("Индивидуальный тотал 1"));
-
-        } else if (value == "МИТ1") {
+        } else if (value == "БИТ1" || value == "МИТ1") {
             coefficientType.shouldHave(text("Индивидуальный тотал 1"));
         }
     }

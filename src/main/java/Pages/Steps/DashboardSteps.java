@@ -149,8 +149,7 @@ public class DashboardSteps extends DashboardLocators {
 
     @Step("Дабл клик по коэффициенту")
     public CouponSteps doubleClickCoefficient() {
-        coefficient.click();
-        coefficient.click();
+        coefficient.doubleClick();
         return new CouponSteps();
     }
 
