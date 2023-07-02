@@ -105,7 +105,7 @@ public class DashboardSteps extends DashboardLocators {
         return elementsWithDropdown;
     }
 
-    @Step("Установить каждый коэфицент")
+    @Step("В зависимости от полученного значение кликаем на коэффициент")
     public CouponSteps setCoefficient(String value) {
         if (value == "1") {
             coefficient.click();
@@ -152,6 +152,24 @@ public class DashboardSteps extends DashboardLocators {
         coefficient.click();
         coefficient.click();
         return new CouponSteps();
+    }
+
+    @Step("Получить название лиги")
+    public String getLeagueName() {
+        String league = leagueName.getText();
+        return league;
+    }
+
+    @Step("Получить название команд")
+    public String getTeamsName(){
+        String teams = teamsName.getText();
+        return teams;
+    }
+
+    @Step("Получить значение коэффициента")
+    public String getCoefficient(){
+        String text = coefficient.getText();
+        return text;
     }
 
 }

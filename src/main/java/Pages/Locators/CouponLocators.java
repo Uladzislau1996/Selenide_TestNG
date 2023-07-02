@@ -31,6 +31,7 @@ public class CouponLocators {
     protected SelenideElement promoCodeTextField = $x("//div[@title='Промо-код']" +
             "/following-sibling::div");
 
+    //Метод гет предназначен для класса DashboardSteps
     public SelenideElement getCoupon() {
         return couponBet;
     }

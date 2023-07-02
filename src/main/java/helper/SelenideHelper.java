@@ -9,10 +9,10 @@ public class SelenideHelper {
 
     public static final int SECONDS = ConfigReader.properties.duration();
 
+    //Добавляем скрин к Allure report
     @Attachment(value = "Screenshot", type = "image/png")
     public byte[] attachScreenshot() {
         return Selenide.screenshot(OutputType.BYTES);
     }
-
 
 }

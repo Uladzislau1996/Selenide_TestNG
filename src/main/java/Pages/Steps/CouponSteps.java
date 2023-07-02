@@ -1,7 +1,6 @@
 package Pages.Steps;
 
 import Pages.Locators.CouponLocators;
-import Pages.Locators.DashboardLocators;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -16,13 +15,13 @@ import static org.testng.Assert.assertTrue;
 
 public class CouponSteps extends CouponLocators {
 
-    DashboardLocators dashboard = new DashboardLocators();
+    DashboardSteps dashboard = new DashboardSteps();
 
     @Step("Проверить все данные в купоне")
     public void checkCouponData() {
         isCouponVisible();
-        assertTrue(checkLeague(), "Название лиги не совпадает с дашбордом");
-        assertTrue(checkTeams(), "Название команды не совпадате с дашбордом");
+        checkLeagueName();
+        checkTeamsName();
         areElementsPresent();
         areDropDownElementsPresent();
         checkTextInElements();
@@ -30,30 +29,32 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Срванить название лиги в купоне с дашбордом")
-    public boolean checkLeague() {
+    public void checkLeagueName() {
         //Получить название лиги из дашборда
-        SelenideElement dashboardLeagueName = dashboard.getLeagueName();
+        String dashboardLeagueName = dashboard.getLeagueName();
 
         //Cравнить название лиги
-        return leagueName.is(text(dashboardLeagueName.getText()));
+        assertTrue(leagueName.is(text(dashboardLeagueName)), "Название лиги не совпадает");
     }
 
     @Step("Срванить название команд в купоне с дашбордом")
-    public boolean checkTeams() {
-        //Получить название команды из дашборда
-        SelenideElement dashboardTeamsName = dashboard.getTeamsName();
+    public void checkTeamsName() {
+        //Получить название команды из дашборда удалив пробелы
+        String dashboardTeamsName = dashboard.getTeamsName().replaceAll("\\s", "");
+        //Получить название команды удалив "-" и пробелсы из строки в купоне
+        String teamName = teamsName.getText().replaceAll("[-\\s]", "");
 
         //Проверить названи команды удалив "-" из строки в купоне
-        String teamName = teamsName.getText().replaceAll("-", "");
-        return dashboardTeamsName.is(text(teamName));
+        assertTrue(teamName.contains(dashboardTeamsName));
+
     }
 
     @Step("Сравнить коэфициент в купоне с дашбордом")
     public void checkCoefficient() {
         //Получить коэфициент из дашборда
-        SelenideElement dashboardCoefficient = dashboard.getCoefficient();
+        String dashboardCoefficient = dashboard.getCoefficient();
         //Проверить что коэффициент совпадает
-        assertTrue(coefficient.is(text(dashboardCoefficient.getText())), "не корректный коэффициент");
+        assertTrue(coefficient.is(text(dashboardCoefficient)), "не корректный коэффициент");
     }
 
     @Step("Проверить отображение элементов в купоне")
@@ -86,13 +87,13 @@ public class CouponSteps extends CouponLocators {
                 dropDown, promoCode, promoCodeTextField, clearButton, deleteRateButton, coefficientType);
     }
 
-    @Step("Возвращаю коллекцию элементов в выпадающем списке")
+    @Step("Вернуть коллекцию элементов в выпадающем списке")
     public List<SelenideElement> getDropDownElements() {
         //Создаю коллекцию из элементов дропдаун меню
         return Arrays.asList(dropDownConfirm, dropDownAcceptAnyChanges, dropDownAcceptWhenRise);
     }
 
-    @Step("Проверка текстов в элементах купона")
+    @Step("Проверка текста в элементах купона")
     public void checkTextInElements() {
         clearButton.shouldHave(text("Очистить"));
         stakeAmount.shouldHave(text("СУММА СТАВКИ (\n" +
@@ -115,7 +116,7 @@ public class CouponSteps extends CouponLocators {
         dropDownAcceptAnyChanges.shouldHave(text("Принять любое изменение"));
     }
 
-    @Step("Проверить тип коэффициента")
+    @Step("Проверить тип коэффициента в зависимости от полученного значение")
     public void checkCoefficientType(String value) {
         if (value == "1") {
             coefficientType.shouldHave(text("1Х2 П1"));
