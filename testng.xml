@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test verbose="2" preserve-order="true" name="DashboardDataTest">
+        <classes>
+            <class name="DashboardTest"></class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="CouponDataTest">
+        <classes>
+            <class name="CouponTest"></class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="End2EndTest">
+        <classes>
+            <class name="End2EndTest"></class>
+        </classes>
+    </test>
+</suite>
