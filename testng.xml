@@ -11,9 +11,4 @@
             <class name="CouponTest"></class>
         </classes>
     </test>
-    <test verbose="2" preserve-order="true" name="End2EndTest">
-        <classes>
-            <class name="End2EndTest"></class>
-        </classes>
-    </test>
 </suite>

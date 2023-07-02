@@ -1,5 +1,6 @@
 import Pages.Steps.DashboardSteps;
 import com.google.common.collect.ImmutableMap;
+import configreader.ConfigReader;
 import helper.SelenideHelper;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -15,13 +16,15 @@ import static config.SelenideConfiguration.config;
 public class BaseTest extends SelenideHelper {
 
     static DashboardSteps dashboard;
+    private static final String BROWSER = ConfigReader.properties.browser();
+    private static final String BASEURL = ConfigReader.properties.baseUrl();
 
     @BeforeSuite(description = "Установить окружение в allure")
     void setAllureEnvironment() {
         allureEnvironmentWriter(
                 ImmutableMap.<String, String>builder()
-                        .put("Browser", "Chrome")
-                        .put("URL", "https://22bet.co.ke/ru")
+                        .put("Browser", BROWSER)
+                        .put("URL", BASEURL)
                         .build());
     }
 

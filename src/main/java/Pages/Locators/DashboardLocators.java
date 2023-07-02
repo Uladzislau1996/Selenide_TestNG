@@ -46,12 +46,12 @@ public class DashboardLocators {
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
 
-    public SelenideElement getTeamsName() {
-        return teamsName;
-    }
-
     public SelenideElement getLeagueName() {
         return leagueName;
+    }
+
+    public SelenideElement getTeamsName() {
+        return teamsName;
     }
 
     public SelenideElement getCoefficient() {

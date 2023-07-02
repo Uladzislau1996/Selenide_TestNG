@@ -16,7 +16,7 @@ import static org.testng.Assert.assertTrue;
 
 public class CouponSteps extends CouponLocators {
 
-    DashboardLocators dashboardLocators = new DashboardLocators();
+    DashboardLocators dashboard = new DashboardLocators();
 
     @Step("Проверить все данные в купоне")
     public void checkCouponData() {
@@ -32,7 +32,7 @@ public class CouponSteps extends CouponLocators {
     @Step("Срванить название лиги в купоне с дашбордом")
     public boolean checkLeague() {
         //Получить название лиги из дашборда
-        SelenideElement dashboardLeagueName = dashboardLocators.getLeagueName();
+        SelenideElement dashboardLeagueName = dashboard.getLeagueName();
 
         //Cравнить название лиги
         return leagueName.is(text(dashboardLeagueName.getText()));
@@ -41,7 +41,7 @@ public class CouponSteps extends CouponLocators {
     @Step("Срванить название команд в купоне с дашбордом")
     public boolean checkTeams() {
         //Получить название команды из дашборда
-        SelenideElement dashboardTeamsName = dashboardLocators.getTeamsName();
+        SelenideElement dashboardTeamsName = dashboard.getTeamsName();
 
         //Проверить названи команды удалив "-" из строки в купоне
         String teamName = teamsName.getText().replaceAll("-", "");
@@ -51,7 +51,7 @@ public class CouponSteps extends CouponLocators {
     @Step("Сравнить коэфициент в купоне с дашбордом")
     public void checkCoefficient() {
         //Получить коэфициент из дашборда
-        SelenideElement dashboardCoefficient = dashboardLocators.getCoefficient();
+        SelenideElement dashboardCoefficient = dashboard.getCoefficient();
         //Проверить что коэффициент совпадает
         assertTrue(coefficient.is(text(dashboardCoefficient.getText())), "не корректный коэффициент");
     }
@@ -174,6 +174,5 @@ public class CouponSteps extends CouponLocators {
     public void isCouponVisible() {
         couponBet.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
-
 
 }

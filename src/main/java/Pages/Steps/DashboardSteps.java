@@ -35,7 +35,7 @@ public class DashboardSteps extends DashboardLocators {
     @Step("Клик по коэффиценту ")
     public CouponSteps setCoefficient() {
         coefficient.click();
-        coupon.getCouponBet().shouldBe(visible, Duration.ofSeconds(SECONDS));
+        coupon.getCoupon().shouldBe(visible, Duration.ofSeconds(SECONDS));
         return new CouponSteps();
     }
 
