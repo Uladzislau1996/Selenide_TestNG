@@ -1,5 +1,5 @@
-### Тестовый проект на Java Selenide TestNG Maven
-### Локаторы описывал в классах Locators степы в Steps
+### Тестовый проект Java Selenide TestNG Maven
+### Локаторы в классах Locators, логика в Steps
 ### Для просмотра Allure отчета введите команду mvn allure:serve после выполнения тестов
 ![Снимок экрана 2023-07-02 в 16 02 17](https://github.com/Uladzislau1996/Selenide_TestNG/assets/39631679/9479f021-6260-46c7-a4b5-ea4d65fe704e)
 ![Снимок экрана 2023-07-02 в 15 53 38](https://github.com/Uladzislau1996/Selenide_TestNG/assets/39631679/b1b8d851-2717-4a60-b326-ce038ec2a5dc)
