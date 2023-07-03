@@ -14,9 +14,9 @@ public class CouponTest extends BaseTest {
     @Severity(SeverityLevel.MINOR)
     @Description("Проверка название команд/лиги в купоне")
     public void testLeagueAndTeamName() {
-        coupon = new DashboardSteps().setCoefficient();
-        coupon.checkCouponData();
-        coupon.checkCoefficient();
+        coupon = dashboard.setCoefficient()
+                .checkCouponData()
+                .checkCoefficient();
     }
 
     @Test(dataProvider = "getCoefficient")
@@ -25,11 +25,11 @@ public class CouponTest extends BaseTest {
     public void openAndDeleteCouponTest(String coefficients) {
         dashboard.isCorrectCoefficientTitle();
 
-        coupon = dashboard.setCoefficient(coefficients);
-        coupon.checkCouponData();
-        coupon.checkCoefficientType(coefficients);
-        coupon.clearCoupon();
-        coupon.IsNotCouponVisible();
+        coupon = dashboard.setCoefficient(coefficients)
+                .checkCouponData()
+                .checkCoefficientType(coefficients)
+                .clearCoupon()
+                .IsNotCouponVisible();
     }
 
     @Test
@@ -38,11 +38,11 @@ public class CouponTest extends BaseTest {
     public void deleteRateTest() {
         dashboard.isCorrectCoefficientTitle();
 
-        coupon = dashboard.setCoefficient();
-        coupon.checkCouponData();
-        coupon.checkCoefficient();
-        coupon.deleteRate();
-        coupon.IsNotCouponVisible();
+        coupon = dashboard.setCoefficient()
+                .checkCouponData()
+                .checkCoefficient()
+                .deleteRate()
+                .IsNotCouponVisible();
     }
 
     @Test
@@ -51,11 +51,11 @@ public class CouponTest extends BaseTest {
     public void clearCouponTest() {
         dashboard.isCorrectCoefficientTitle();
 
-        coupon = dashboard.setCoefficient();
-        coupon.checkCouponData();
-        coupon.checkCoefficient();
-        coupon.clearCoupon();
-        coupon.IsNotCouponVisible();
+        coupon = dashboard.setCoefficient()
+                .checkCouponData()
+                .checkCoefficient()
+                .clearCoupon()
+                .IsNotCouponVisible();
     }
 
     @Test
@@ -64,8 +64,8 @@ public class CouponTest extends BaseTest {
     public void couponIsNotVisible() {
         dashboard.isCorrectCoefficientTitle();
 
-        coupon = dashboard.doubleClickCoefficient();
-        coupon.IsNotCouponVisible();
+        coupon = dashboard.doubleClickCoefficient()
+                .IsNotCouponVisible();
     }
 
     @Test
@@ -74,8 +74,8 @@ public class CouponTest extends BaseTest {
     public void couponIsVisible() {
         dashboard.isCorrectCoefficientTitle();
 
-        coupon = dashboard.doubleClickCoefficient();
-        coupon.isCouponVisible();
+        coupon = dashboard.doubleClickCoefficient()
+                .isCouponVisible();
     }
 
 

@@ -10,8 +10,8 @@ public class DashboardTest extends BaseTest {
     @Severity(SeverityLevel.MINOR)
     @Description("Проверка данных в дашборде")
     public void testDashboard() {
-        dashboard.isCorrectCoefficientTitle();
-        dashboard.isCorrectDropdown();
+        dashboard.isCorrectCoefficientTitle()
+                 .isCorrectDropdown();
     }
 
 }

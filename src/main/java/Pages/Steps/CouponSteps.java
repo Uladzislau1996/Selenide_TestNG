@@ -18,7 +18,7 @@ public class CouponSteps extends CouponLocators {
     DashboardSteps dashboard = new DashboardSteps();
 
     @Step("Проверить все данные в купоне")
-    public void checkCouponData() {
+    public CouponSteps checkCouponData() {
         isCouponVisible();
         checkLeagueName();
         checkTeamsName();
@@ -26,6 +26,7 @@ public class CouponSteps extends CouponLocators {
         areDropDownElementsPresent();
         checkTextInElements();
         checkDropdownText();
+        return this;
     }
 
     @Step("Срванить название лиги в купоне с дашбордом")
@@ -50,11 +51,12 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Сравнить коэфициент в купоне с дашбордом")
-    public void checkCoefficient() {
+    public CouponSteps checkCoefficient() {
         //Получить коэфициент из дашборда
         String dashboardCoefficient = dashboard.getCoefficient();
         //Проверить что коэффициент совпадает
         assertTrue(coefficient.is(text(dashboardCoefficient)), "не корректный коэффициент");
+        return this;
     }
 
     @Step("Проверить отображение элементов в купоне")
@@ -117,7 +119,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Проверить тип коэффициента в зависимости от полученного значение")
-    public void checkCoefficientType(String value) {
+    public CouponSteps checkCoefficientType(String value) {
         if (value == "1") {
             coefficientType.shouldHave(text("1Х2 П1"));
 
@@ -148,26 +150,31 @@ public class CouponSteps extends CouponLocators {
         } else if (value == "БИТ1" || value == "МИТ1") {
             coefficientType.shouldHave(text("Индивидуальный тотал 1"));
         }
+        return this;
     }
 
     @Step("Клик по кнопке очистить")
-    public void clearCoupon() {
+    public CouponSteps clearCoupon() {
         clearButton.click();
+        return this;
     }
 
     @Step("Клик по кнопке удалить ставку")
-    public void deleteRate() {
+    public CouponSteps deleteRate() {
         deleteRateButton.click();
+        return this;
     }
 
     @Step("Проверить что купон не отображается")
-    public void IsNotCouponVisible() {
+    public CouponSteps IsNotCouponVisible() {
         couponBet.shouldNotBe(visible);
+        return this;
     }
 
     @Step("Проверить что купон отображается")
-    public void isCouponVisible() {
+    public CouponSteps isCouponVisible() {
         couponBet.shouldBe(visible, Duration.ofSeconds(SECONDS));
+        return this;
     }
 
 }

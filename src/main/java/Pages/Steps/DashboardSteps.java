@@ -40,7 +40,7 @@ public class DashboardSteps extends DashboardLocators {
     }
 
     @Step("Проверка текста тайтлов в коэффицентах дашборда")
-    public void isCorrectCoefficientTitle() {
+    public DashboardSteps isCorrectCoefficientTitle() {
         coefficientTitle1.shouldHave(Condition.text("1"));
         coefficientTitleX.shouldHave(Condition.text("X"));
         coefficientTitle2.shouldHave(Condition.text("2"));
@@ -56,10 +56,11 @@ public class DashboardSteps extends DashboardLocators {
         coefficientTitleIndividualTotalFirstTeam.shouldHave(Condition.text("Б"));
         coefficientTitleIndividualTotal.shouldHave(Condition.text("ИТ1"));
         coefficientTitleIndividualTotalSecondTeam.shouldHave(Condition.text("М"));
+        return this;
     }
 
     @Step("Проверить дропдаун меню в тайтлах коэффициента")
-    public void isCorrectDropdown() {
+    public DashboardSteps isCorrectDropdown() {
         //Создаю коллекцию элементов из элементов с выпадающим списком
         List<SelenideElement> dropdownElements = getElementsWithDropdown();
 
@@ -69,6 +70,8 @@ public class DashboardSteps extends DashboardLocators {
             isCorrectTextDropDown();
             isDropdownClickable();
         }
+
+        return this;
     }
 
     @Step("Проверить текст в пунктах меню")

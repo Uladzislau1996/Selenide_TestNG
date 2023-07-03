@@ -12,7 +12,7 @@ public class DashboardLocators {
     protected SelenideElement teamsName = dashboard.$x("descendant::span[@class='c-events__teams'][1]");
     protected SelenideElement acceptCookie = $x("//div[@class='f-policy']/descendant::div[text()='Продолжить']");
     protected SelenideElement coefficient = dashboard.$x("descendant::span[@class='c-bets__inner'][1]");
-    protected SelenideElement coefficientTitle1 = $x("descendant::div[@title='1x2'][1]");
+    protected SelenideElement coefficientTitle1 = dashboard.$x("descendant::div[@title='1x2'][1]");
     protected SelenideElement coefficientTitleX = dashboard.$x("descendant::div[@title='Ничья'][1]");
     protected SelenideElement coefficientTitle2 = dashboard.$x("descendant::div[@title='1x2'][2]");
     protected SelenideElement coefficientTitle1x = dashboard.$x("descendant::div[@title='Победа 1 или ничья'][1]");
