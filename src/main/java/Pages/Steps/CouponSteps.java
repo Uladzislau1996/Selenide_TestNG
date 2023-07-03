@@ -20,17 +20,17 @@ public class CouponSteps extends CouponLocators {
     @Step("Проверить все данные в купоне")
     public CouponSteps checkCouponData() {
         isCouponVisible();
-        checkLeagueName();
-        checkTeamsName();
-        areElementsPresent();
-        areDropDownElementsPresent();
-        checkTextInElements();
-        checkDropdownText();
+        assertLeagueName();
+        assertTeamsName();
+        shouldCouponElementsVisible();
+        shouldDropDownElementsPresent();
+        assertTextInElements();
+        assertDropdownText();
         return this;
     }
 
     @Step("Срванить название лиги в купоне с дашбордом")
-    public void checkLeagueName() {
+    public void assertLeagueName() {
         //Получить название лиги из дашборда
         String dashboardLeagueName = dashboard.getLeagueName();
 
@@ -39,7 +39,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Срванить название команд в купоне с дашбордом")
-    public void checkTeamsName() {
+    public void assertTeamsName() {
         //Получить название команды из дашборда удалив пробелы
         String dashboardTeamsName = dashboard.getTeamsName().replaceAll("\\s", "");
         //Получить название команды удалив "-" и пробелсы из строки в купоне
@@ -51,7 +51,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Сравнить коэфициент в купоне с дашбордом")
-    public CouponSteps checkCoefficient() {
+    public CouponSteps checkCoefficientNumber() {
         //Получить коэфициент из дашборда
         String dashboardCoefficient = dashboard.getCoefficient();
         //Проверить что коэффициент совпадает
@@ -60,7 +60,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Проверить отображение элементов в купоне")
-    public void areElementsPresent() {
+    public void shouldCouponElementsVisible() {
         //Проверить, отображение элементов в списке
         List<SelenideElement> elements = getCouponElements();
         for (SelenideElement element : elements) {
@@ -69,7 +69,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Проверить отображение элементов в lhjglfeyt")
-    public void areDropDownElementsPresent() {
+    public void shouldDropDownElementsPresent() {
         //открыть дропдаун
         dropDown.click();
 
@@ -96,7 +96,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Проверка текста в элементах купона")
-    public void checkTextInElements() {
+    public void assertTextInElements() {
         clearButton.shouldHave(text("Очистить"));
         stakeAmount.shouldHave(text("СУММА СТАВКИ (\n" +
                 "KES\n" +
@@ -110,7 +110,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Проверка текста в дропдуне купона")
-    public void checkDropdownText() {
+    public void assertDropdownText() {
         dropDown.click();
         dropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(SECONDS));
         dropDownAcceptWhenRise.shouldHave(text("Принять при повышении"));
@@ -166,7 +166,7 @@ public class CouponSteps extends CouponLocators {
     }
 
     @Step("Проверить что купон не отображается")
-    public CouponSteps IsNotCouponVisible() {
+    public CouponSteps isNotCouponVisible() {
         couponBet.shouldNotBe(visible);
         return this;
     }

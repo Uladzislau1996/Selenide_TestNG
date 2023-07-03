@@ -16,63 +16,63 @@ public class CouponTest extends BaseTest {
     public void testLeagueAndTeamName() {
         coupon = dashboard.setCoefficient()
                 .checkCouponData()
-                .checkCoefficient();
+                .checkCoefficientNumber();
     }
 
     @Test(dataProvider = "getCoefficient")
     @Severity(SeverityLevel.NORMAL)
     @Description("Установить коэфицент, проверить данные купоне, удалить коэфициент ")
-    public void openAndDeleteCouponTest(String coefficients) {
-        dashboard.isCorrectCoefficientTitle();
+    public void openAndDeleteCouponTest(String setCoefficient) {
+        dashboard.assertCoefficientTitleText();
 
-        coupon = dashboard.setCoefficient(coefficients)
+        coupon = dashboard.setCoefficient(setCoefficient)
                 .checkCouponData()
-                .checkCoefficientType(coefficients)
+                .checkCoefficientType(setCoefficient)
                 .clearCoupon()
-                .IsNotCouponVisible();
+                .isNotCouponVisible();
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Description("Купон удаляется по кнопке DeleteRate")
     public void deleteRateTest() {
-        dashboard.isCorrectCoefficientTitle();
+        dashboard.assertCoefficientTitleText();
 
         coupon = dashboard.setCoefficient()
                 .checkCouponData()
-                .checkCoefficient()
+                .checkCoefficientNumber()
                 .deleteRate()
-                .IsNotCouponVisible();
+                .isNotCouponVisible();
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Description("Купон удаляется по кнопке clearCoupon")
     public void clearCouponTest() {
-        dashboard.isCorrectCoefficientTitle();
+        dashboard.assertCoefficientTitleText();
 
         coupon = dashboard.setCoefficient()
                 .checkCouponData()
-                .checkCoefficient()
+                .checkCoefficientNumber()
                 .clearCoupon()
-                .IsNotCouponVisible();
+                .isNotCouponVisible();
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Description("Купон не появляется после добла клика по коэффициенту в дашборде")
     public void couponIsNotVisible() {
-        dashboard.isCorrectCoefficientTitle();
+        dashboard.assertCoefficientTitleText();
 
         coupon = dashboard.doubleClickCoefficient()
-                .IsNotCouponVisible();
+                .isNotCouponVisible();
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Description("Купон отображается после дабл клика по коэффициенту")
     public void couponIsVisible() {
-        dashboard.isCorrectCoefficientTitle();
+        dashboard.assertCoefficientTitleText();
 
         coupon = dashboard.doubleClickCoefficient()
                 .isCouponVisible();

@@ -40,7 +40,7 @@ public class DashboardSteps extends DashboardLocators {
     }
 
     @Step("Проверка текста тайтлов в коэффицентах дашборда")
-    public DashboardSteps isCorrectCoefficientTitle() {
+    public DashboardSteps assertCoefficientTitleText() {
         coefficientTitle1.shouldHave(Condition.text("1"));
         coefficientTitleX.shouldHave(Condition.text("X"));
         coefficientTitle2.shouldHave(Condition.text("2"));
@@ -60,14 +60,14 @@ public class DashboardSteps extends DashboardLocators {
     }
 
     @Step("Проверить дропдаун меню в тайтлах коэффициента")
-    public DashboardSteps isCorrectDropdown() {
+    public DashboardSteps checkDropdownMenu() {
         //Создаю коллекцию элементов из элементов с выпадающим списком
         List<SelenideElement> dropdownElements = getElementsWithDropdown();
 
         //Проверяю текст в дропдаун меню
         for (SelenideElement element : dropdownElements) {
             element.shouldBe(visible, Duration.ofSeconds(SECONDS)).click();
-            isCorrectTextDropDown();
+            assertTextDropDown();
             isDropdownClickable();
         }
 
@@ -75,7 +75,7 @@ public class DashboardSteps extends DashboardLocators {
     }
 
     @Step("Проверить текст в пунктах меню")
-    public void isCorrectTextDropDown() {
+    public void assertTextDropDown() {
         dropDownX.shouldHave(Condition.text("X"));
         dropDown12.shouldHave(Condition.text("12"));
         dropDownTotal.shouldHave(Condition.text("Тотал"));
