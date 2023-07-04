@@ -1,4 +1,3 @@
-import Pages.Locators.DashboardLocators;
 import Pages.Steps.DashboardSteps;
 import com.google.common.collect.ImmutableMap;
 import configreader.ConfigReader;

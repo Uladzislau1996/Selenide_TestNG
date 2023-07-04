@@ -61,6 +61,20 @@ public class DashboardLocators {
         return new CouponSteps();
     }
 
+    public void acceptCookie() {
+        acceptCookie.click();
+    }
+
+    public CouponSteps setCoefficient() {
+        coefficient.click();
+        return new CouponSteps();
+    }
+
+    public CouponSteps setCoefficient(int number) {
+        coefficients.get(number).click();
+        return new CouponSteps();
+    }
+
     public String getLeagueName() {
         String league = leagueName.getText();
         return league;
@@ -76,18 +90,16 @@ public class DashboardLocators {
         return text;
     }
 
-    public void acceptCookie() {
-        acceptCookie.click();
+    public void isDashboardVisible() {
+        dashboard.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
 
-    public CouponSteps setCoefficient() {
-        coefficient.click();
-        return new CouponSteps();
+    public void isCoefficientVisible() {
+        coefficient.shouldBe(Condition.visible);
     }
 
-    public CouponSteps setCoefficient(int number) {
-        coefficients.get(number).click();
-        return new CouponSteps();
+    public void scrollToCoefficient() {
+        coefficient.scrollIntoView("false");
     }
 
     public String getCoefficientData(int number) {
@@ -108,16 +120,5 @@ public class DashboardLocators {
         return elementsWithDropdown;
     }
 
-    public void isDashboardVisible() {
-        dashboard.shouldBe(visible, Duration.ofSeconds(SECONDS));
-    }
-
-    public void isCoefficientVisible() {
-        coefficient.shouldBe(Condition.visible);
-    }
-
-    public void scrollToCoefficient() {
-        coefficient.scrollIntoView("false");
-    }
 
 }

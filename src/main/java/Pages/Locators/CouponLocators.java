@@ -40,19 +40,7 @@ public class CouponLocators {
             "/following-sibling::div");
 
 
-    @Step("Проверить что купон отображается")
-    public CouponSteps isCouponVisible() {
-        couponBet.shouldBe(visible, Duration.ofSeconds(SECONDS));
-        return new CouponSteps();
-    }
-
-    @Step("Проверить что купон не отображается")
-    public CouponSteps isCouponNotVisible() {
-        couponBet.shouldNotBe(visible);
-        return new CouponSteps();
-    }
-
-    public void clickDropDown() {
+    public void openDropDown() {
         dropDown.click();
     }
 
@@ -66,6 +54,22 @@ public class CouponLocators {
     public CouponSteps deleteRate() {
         deleteRateButton.click();
         return new CouponSteps();
+    }
+
+    @Step("Проверить что купон отображается")
+    public CouponSteps isCouponVisible() {
+        couponBet.shouldBe(visible, Duration.ofSeconds(SECONDS));
+        return new CouponSteps();
+    }
+
+    @Step("Проверить что купон не отображается")
+    public CouponSteps isCouponNotVisible() {
+        couponBet.shouldNotBe(visible);
+        return new CouponSteps();
+    }
+
+    public void isDropdownElementVisible() {
+        dropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
 
     public List<SelenideElement> getDropDownElements() {
@@ -83,10 +87,6 @@ public class CouponLocators {
 
     public String getTeamsName() {
         return teamsName.getText().replaceAll("[-\\s]", "");
-    }
-
-    public void isDropdownElementVisible() {
-        dropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
 
 

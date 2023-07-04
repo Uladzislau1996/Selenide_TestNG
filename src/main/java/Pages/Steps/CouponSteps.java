@@ -52,7 +52,7 @@ public class CouponSteps extends CouponLocators {
     @Step("Проверить отображение элементов в дропдун меню")
     public CouponSteps checkDropDownElementsVisibility() {
         //открыть дропдаун
-        clickDropDown();
+        openDropDown();
 
         //Проверка элементов в дропдауне
         for (SelenideElement element : getDropDownElements()) {
@@ -80,7 +80,7 @@ public class CouponSteps extends CouponLocators {
     @Step("Проверка текста в dropdown menu купона")
     public CouponSteps checkDropdownElementsText() {
         //Открыть дродаун, проверить наличие dropdown menu
-        clickDropDown();
+        openDropDown();
         isDropdownElementVisible();
 
         //Проверка текста в dropdown menu
