@@ -4,6 +4,7 @@ import Pages.Steps.CouponSteps;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -54,6 +55,7 @@ public class DashboardLocators {
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
 
+    @Step("Даблклик по коэффицинету")
     public CouponSteps doubleClickCoefficient() {
         coefficient.doubleClick();
         return new CouponSteps();
