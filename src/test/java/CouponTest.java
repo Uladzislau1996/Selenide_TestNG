@@ -16,8 +16,6 @@ public class CouponTest extends BaseTest {
         coupon = dashboard.setCoefficient(setCoefficient)
                 .isCouponVisible()
                 .checkCoefficientNumber(setCoefficient)
-                .assertLeagueName()
-                .assertTeamsName()
                 .checkCouponElementsVisibility()
                 .checkDropDownElementsVisibility()
                 .checkElementsText()
@@ -35,6 +33,8 @@ public class CouponTest extends BaseTest {
         coupon = dashboard.setCoefficient()
                 .isCouponVisible()
                 .checkCoefficient()
+                .assertLeagueName()
+                .assertTeamsName()
                 .deleteRate()
                 .isCouponNotVisible();
     }
@@ -48,6 +48,8 @@ public class CouponTest extends BaseTest {
         coupon = dashboard.setCoefficient()
                 .isCouponVisible()
                 .checkCoefficient()
+                .assertLeagueName()
+                .assertTeamsName()
                 .clearCoupon()
                 .isCouponNotVisible();
     }

@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 import static helper.SelenideHelper.SECONDS;
@@ -55,6 +56,8 @@ public class DashboardLocators {
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
 
+    protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__more-wrap']");
+
     @Step("Даблклик по коэффицинету")
     public CouponSteps doubleClickCoefficient() {
         coefficient.doubleClick();
@@ -81,7 +84,7 @@ public class DashboardLocators {
     }
 
     public String getTeamsName() {
-        String teams = teamsName.getText().replaceAll("\\s", "");
+        String teams = teamsName.getText().replaceAll("[-\\s]", "");
         return teams;
     }
 
