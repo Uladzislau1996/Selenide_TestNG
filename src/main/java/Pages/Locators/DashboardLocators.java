@@ -1,9 +1,17 @@
 package Pages.Locators;
 
+import Pages.Steps.CouponSteps;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
+import static helper.SelenideHelper.SECONDS;
 
 public class DashboardLocators {
 
@@ -45,5 +53,69 @@ public class DashboardLocators {
             .$x("descendant::li[@title='Индивидуальный тотал 2']");
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
+
+    public CouponSteps doubleClickCoefficient() {
+        coefficient.doubleClick();
+        return new CouponSteps();
+    }
+
+    public String getLeagueName() {
+        String league = leagueName.getText();
+        return league;
+    }
+
+    public String getTeamsName() {
+        String teams = teamsName.getText().replaceAll("\\s", "");
+        return teams;
+    }
+
+    public String getCoefficient() {
+        String text = coefficient.getText();
+        return text;
+    }
+
+    public void acceptCookie() {
+        acceptCookie.click();
+    }
+
+    public CouponSteps setCoefficient() {
+        coefficient.click();
+        return new CouponSteps();
+    }
+
+    public CouponSteps setCoefficient(int number) {
+        coefficients.get(number).click();
+        return new CouponSteps();
+    }
+
+    public String getCoefficientData(int number) {
+        return coefficients.get(number).getText();
+    }
+
+    public List<SelenideElement> getDropdownElements() {
+        List<SelenideElement> dropdownElements = Arrays.asList(dropDownX, dropDown12,
+                dropDownTotal, dropDownFora, dropDownIndividualTotal1);
+
+        return dropdownElements;
+    }
+
+    public List<SelenideElement> getElementsWithMenu() {
+        List<SelenideElement> elementsWithDropdown = Arrays.asList(coefficientTitleX, coefficientTitle12,
+                coefficientTitleTotal, coefficientTitleFora, coefficientTitleIndividualTotal);
+
+        return elementsWithDropdown;
+    }
+
+    public void isDashboardVisible() {
+        dashboard.shouldBe(visible, Duration.ofSeconds(SECONDS));
+    }
+
+    public void isCoefficientVisible() {
+        coefficient.shouldBe(Condition.visible);
+    }
+
+    public void scrollToCoefficient() {
+        coefficient.scrollIntoView("false");
+    }
 
 }

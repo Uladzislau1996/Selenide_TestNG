@@ -1,3 +1,4 @@
+import Pages.Locators.DashboardLocators;
 import Pages.Steps.DashboardSteps;
 import com.google.common.collect.ImmutableMap;
 import configreader.ConfigReader;
@@ -33,8 +34,8 @@ public class BaseTest extends SelenideHelper {
         //init config
         config();
         //Precondition
-        dashboard = DashboardSteps.openPage();
-        dashboard.Precondition();
+        dashboard = DashboardSteps.openPage()
+                .setPrecondition();
     }
 
     @AfterMethod(description = "Добавить скриншот если тест упал")

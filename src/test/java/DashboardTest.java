@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 public class DashboardTest extends BaseTest {
 
-
     @Test
     @Severity(SeverityLevel.MINOR)
     @Description("Проверка данных в дашборде")

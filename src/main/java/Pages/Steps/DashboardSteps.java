@@ -7,8 +7,6 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
@@ -25,18 +23,12 @@ public class DashboardSteps extends DashboardLocators {
     }
 
     @Step("Принять куки, скрол к коэффициенту, проверка отображения события")
-    public void Precondition() {
-        acceptCookie.click();
-        coefficient.shouldBe(Condition.visible);
-        coefficient.scrollIntoView("false");
-        dashboard.shouldBe(visible, Duration.ofSeconds(SECONDS));
-    }
-
-    @Step("Клик по коэффиценту ")
-    public CouponSteps setCoefficient() {
-        coefficient.click();
-        coupon.getCoupon().shouldBe(visible, Duration.ofSeconds(SECONDS));
-        return new CouponSteps();
+    public DashboardSteps setPrecondition() {
+        acceptCookie();
+        isCoefficientVisible();
+        scrollToCoefficient();
+        isDashboardVisible();
+        return this;
     }
 
     @Step("Проверка текста тайтлов в коэффицентах дашборда")
@@ -59,13 +51,10 @@ public class DashboardSteps extends DashboardLocators {
         return this;
     }
 
-    @Step("Проверить дропдаун меню в тайтлах коэффициента")
+    @Step("Проверить дропдаун меню в каждом тайтле коэффициента")
     public DashboardSteps checkDropdownMenu() {
-        //Создаю коллекцию элементов из элементов с выпадающим списком
-        List<SelenideElement> dropdownElements = getElementsWithDropdown();
-
         //Проверяю текст в дропдаун меню
-        for (SelenideElement element : dropdownElements) {
+        for (SelenideElement element : getElementsWithMenu()) {
             element.shouldBe(visible, Duration.ofSeconds(SECONDS)).click();
             assertTextDropDown();
             isDropdownClickable();
@@ -86,93 +75,102 @@ public class DashboardSteps extends DashboardLocators {
 
     @Step("Проверить что элементы в дроп дауне кликабельны")
     public void isDropdownClickable() {
-        List<SelenideElement> dropdownElements = getDropdownElements();
-
         //Проверить что элементы кликабельны
-        for (SelenideElement element : dropdownElements) {
+        for (SelenideElement element : getDropdownElements()) {
             element.shouldBe(Condition.enabled);
         }
-    }
-
-    @Step("Вернуть коллекцию элементов с пунктами меню")
-    public List<SelenideElement> getDropdownElements() {
-        List<SelenideElement> dropdownElements = Arrays.asList(dropDownX, dropDown12,
-                dropDownTotal, dropDownFora, dropDownIndividualTotal1);
-        return dropdownElements;
-    }
-
-    @Step("Вернуть коллекцию элементов с пунктами меню")
-    public List<SelenideElement> getElementsWithDropdown() {
-        List<SelenideElement> elementsWithDropdown = Arrays.asList(coefficientTitleX, coefficientTitle12,
-                coefficientTitleTotal, coefficientTitleFora, coefficientTitleIndividualTotal);
-        return elementsWithDropdown;
     }
 
     @Step("В зависимости от полученного значение кликаем на коэффициент")
     public CouponSteps setCoefficient(String value) {
         if (value == "1") {
-            coefficient.click();
+            setCoefficient(0);
 
         } else if (value == "X") {
-            coefficients.get(1).click();
+            setCoefficient(1);
 
         } else if (value == "2") {
-            coefficients.get(2).click();
+            setCoefficient(2);
 
         } else if (value == "1X") {
-            coefficients.get(3).click();
+            setCoefficient(3);
 
         } else if (value == "12") {
-            coefficients.get(4).click();
+            setCoefficient(4);
 
         } else if (value == "2X") {
-            coefficients.get(5).click();
+            setCoefficient(5);
 
         } else if (value == "Б") {
-            coefficients.get(6).click();
+            setCoefficient(6);
 
         } else if (value == "М") {
-            coefficients.get(7).click();
+            setCoefficient(7);
 
         } else if (value == "Фора1") {
-            coefficients.get(8).click();
+            setCoefficient(8);
 
         } else if (value == "Фора2") {
-            coefficients.get(9).click();
+            setCoefficient(9);
 
         } else if (value == "БИТ1") {
-            coefficients.get(10).click();
+            setCoefficient(10);
 
         } else if (value == "МИТ1") {
-            coefficients.get(11).click();
+            setCoefficient(11);
         }
 
         return new CouponSteps();
     }
 
-    @Step("Дабл клик по коэффициенту")
-    public CouponSteps doubleClickCoefficient() {
-        coefficient.doubleClick();
-        return new CouponSteps();
-    }
+    @Step("В зависимости от полученного значение получить значение коэффициента")
+    public String getCoefficient(String value) {
+        String text = "";
 
-    @Step("Получить название лиги")
-    public String getLeagueName() {
-        String league = leagueName.getText();
-        return league;
-    }
+        if (value == "1") {
+            text = getCoefficientData(0);
 
-    @Step("Получить название команд")
-    public String getTeamsName(){
-        String teams = teamsName.getText();
-        return teams;
-    }
+        } else if (value == "X") {
+            text = getCoefficientData(1);
 
-    @Step("Получить значение коэффициента")
-    public String getCoefficient(){
-        String text = coefficient.getText();
+        } else if (value == "2") {
+            text = getCoefficientData(2);
+
+        } else if (value == "1X") {
+            text = getCoefficientData(3);
+
+        } else if (value == "12") {
+            text = getCoefficientData(4);
+
+        } else if (value == "2X") {
+            text = getCoefficientData(5);
+
+        } else if (value == "Б") {
+            text = getCoefficientData(6);
+
+        } else if (value == "М") {
+            text = getCoefficientData(7);
+            ;
+
+        } else if (value == "Фора1") {
+            text = getCoefficientData(8);
+            ;
+
+        } else if (value == "Фора2") {
+            text = getCoefficientData(9);
+            ;
+
+        } else if (value == "БИТ1") {
+            text = getCoefficientData(10);
+            ;
+
+        } else if (value == "МИТ1") {
+            text = getCoefficientData(11);
+            ;
+        }
         return text;
     }
+
 
 }
 
