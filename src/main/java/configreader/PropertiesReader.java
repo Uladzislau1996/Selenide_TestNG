@@ -10,28 +10,28 @@ import org.aeonbits.owner.Config;
 
 public interface PropertiesReader extends org.aeonbits.owner.Config {
 
-    @Config.Key("browser")
+    @Config.Key("BROWSER")
     String browser();
 
-    @Config.Key("base_url")
+    @Config.Key("BASE_URL")
     String baseUrl();
 
     @Config.Key("size")
     String size();
 
-    @Config.Key("driverManagerEnabled")
+    @Config.Key("DRIVER_MANAGER_ENABLED")
     Boolean driverManagerEnabled();
 
-    @Config.Key("headless")
+    @Config.Key("HEADLESS")
     Boolean headless();
 
-    @Config.Key("screenshots")
+    @Config.Key("SCREENSHOTS")
     Boolean screenshots();
 
-    @Config.Key("timeout")
+    @Config.Key("TIMEOUT")
     int timeout();
 
-    @Config.Key("duration")
+    @Config.Key("DURATION")
     int duration();
 
 }
