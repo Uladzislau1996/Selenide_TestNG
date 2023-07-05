@@ -49,7 +49,7 @@ public class CouponSteps extends CouponLocators {
         return this;
     }
 
-    @Step("Проверить отображение элементов в дропдун меню")
+    @Step("Проверить отображение элементов в дропдаун меню")
     public CouponSteps checkDropDownElementsVisibility() {
         //открыть дропдаун
         openDropDown();

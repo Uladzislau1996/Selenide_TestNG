@@ -56,13 +56,21 @@ public class DashboardLocators {
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
 
-    protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__more-wrap'][1]");
+    protected SelenideElement moreBetsButton = dashboard.$x("descendant::div[@class='c-events__more-wrap'][1]");
 
     protected SelenideElement moreBetsIcon = dashboard.$x("descendant::span[@class='scoreboard-nav__btn-label'][1]");
 
+    protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__moreEvs']");
+
     @Step("Открыть список со всеми ставками")
     public DashboardSteps openMoreBetsMenu() {
-        moreBetsMenu.shouldBe(visible).click();
+        moreBetsButton.shouldBe(visible).click();
+        return new DashboardSteps();
+    }
+
+    @Step("Дабл клик по меню со всеми ставками")
+    public DashboardSteps doubleClickMoreBetsMenu() {
+        moreBetsButton.shouldBe(visible).doubleClick();
         return new DashboardSteps();
     }
 
@@ -106,7 +114,7 @@ public class DashboardLocators {
     }
 
     public String getBetsNumber() {
-        String text = moreBetsMenu.getText();
+        String text = moreBetsButton.getText();
         return text;
     }
 
@@ -123,11 +131,18 @@ public class DashboardLocators {
         coefficient.shouldBe(Condition.visible);
     }
 
+    public DashboardSteps isMoreBetsMenuNotVisible() {
+        moreBetsMenu.shouldNotBe(visible);
+        return new DashboardSteps();
+    }
+
+    //Скрол к коэффициенту
     public void scrollToCoefficient() {
         coefficient.scrollIntoView("false");
     }
 
 
+    //Получить список элементов с дропдаун меню
     public List<SelenideElement> getDropdownElements() {
         List<SelenideElement> dropdownElements = Arrays.asList(dropDownX, dropDown12,
                 dropDownTotal, dropDownFora, dropDownIndividualTotal1);
@@ -135,6 +150,7 @@ public class DashboardLocators {
         return dropdownElements;
     }
 
+    //Получить список элементов содержащих дропдаун меню
     public List<SelenideElement> getElementsWithMenu() {
         List<SelenideElement> elementsWithDropdown = Arrays.asList(coefficientTitleX, coefficientTitle12,
                 coefficientTitleTotal, coefficientTitleFora, coefficientTitleIndividualTotal);

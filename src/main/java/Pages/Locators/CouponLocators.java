@@ -72,11 +72,13 @@ public class CouponLocators {
         dropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
 
+    //Получить список элементов в дропдаун меню
     public List<SelenideElement> getDropDownElements() {
         //Создаю коллекцию из элементов дропдаун меню
         return Arrays.asList(dropDownConfirm, dropDownAcceptAnyChanges, dropDownAcceptWhenRise);
     }
 
+    //Получить список элементов в купоне
     public List<SelenideElement> getCouponElements() {
         //Создать коллекцию из элементов купона
         return Arrays.asList(leagueName, teamsName,

@@ -5,14 +5,22 @@ import org.testng.annotations.Test;
 
 public class DashboardTest extends BaseTest {
 
-    @Test
-    @Severity(SeverityLevel.MINOR)
+    @Test(priority = 2)
+    @Severity(SeverityLevel.NORMAL)
     @Description("Проверка данных в дашборде")
-    public void testDashboard() {
+    public void dashboardTest() {
         dashboard.assertCoefficientTitleText()
-                 .checkDropdownMenu()
-                 .openMoreBetsMenu()
-                 .compareBetsNumber();
+                .checkDropdownMenu()
+                .openMoreBetsMenu()
+                .compareBetsNumber();
+    }
+
+    @Test(priority = 1)
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Проверка данных в дашборде")
+    public void moreBetsMenuTest() {
+        dashboard.doubleClickMoreBetsMenu()
+                .isMoreBetsMenuNotVisible();
     }
 
 }
