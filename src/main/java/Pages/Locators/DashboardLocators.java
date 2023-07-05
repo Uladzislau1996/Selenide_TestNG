@@ -40,7 +40,6 @@ public class DashboardLocators {
             .$x("descendant::div[@title='Параметр индивидуального тотала'][1]");
     protected SelenideElement coefficientTitleIndividualTotalSecondTeam = dashboard
             .$x("descendant::div[@title='Индивидуальный тотал 1 команды меньше'][1]");
-
     protected SelenideElement coefficientDropDown = $x("//ul[@class='b-markets-list']");
     protected SelenideElement dropDownX = coefficientDropDown.$x("descendant::li[@title='Ничья']");
     protected SelenideElement dropDown12 = coefficientDropDown
@@ -53,7 +52,6 @@ public class DashboardLocators {
             $x("descendant::li[@title='Параметр индивидуального тотала'][1]");
     protected SelenideElement dropDownIndividualTotal2 = coefficientDropDown
             .$x("descendant::li[@title='Индивидуальный тотал 2']");
-
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
     protected SelenideElement moreBetsButton = dashboard.$x("descendant::div[@class='c-events__more-wrap'][1]");
     protected SelenideElement moreBetsIcon = dashboard.$x("descendant::span[@class='scoreboard-nav__btn-label'][1]");
@@ -138,7 +136,6 @@ public class DashboardLocators {
     public void scrollToCoefficient() {
         coefficient.scrollIntoView("false");
     }
-
 
     //Получить список элементов с дропдаун меню
     public List<SelenideElement> getDropdownElements() {
