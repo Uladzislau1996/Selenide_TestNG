@@ -40,10 +40,6 @@ public class CouponLocators {
             "/following-sibling::div");
 
 
-    public void openDropDown() {
-        dropDown.shouldBe(visible).click();
-    }
-
     @Step("очистить купон")
     public CouponSteps clearCoupon() {
         clearButton.shouldBe(visible).click();
@@ -68,6 +64,10 @@ public class CouponLocators {
         return new CouponSteps();
     }
 
+    public void openDropDown() {
+        dropDown.shouldBe(visible).click();
+    }
+
     public void isDropdownElementVisible() {
         dropDownAcceptWhenRise.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
@@ -83,7 +83,7 @@ public class CouponLocators {
         //Создать коллекцию из элементов купона
         return Arrays.asList(leagueName, teamsName,
                 coefficient, stakeAmount, stakeAmountCounter, maximumBet, maximumBetCounter,
-                possibleWin, possibleWinCounter, changingCoefficient, changingCoefficient,
+                possibleWin, possibleWinCounter, changingCoefficient,
                 dropDown, promoCode, promoCodeTextField, clearButton, deleteRateButton, coefficientType);
     }
 

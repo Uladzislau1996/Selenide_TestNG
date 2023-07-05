@@ -62,6 +62,7 @@ public class DashboardLocators {
 
     protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__moreEvs']");
 
+
     @Step("Открыть список со всеми ставками")
     public DashboardSteps openMoreBetsMenu() {
         moreBetsButton.shouldBe(visible).click();
