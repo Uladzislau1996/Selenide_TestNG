@@ -1,6 +1,7 @@
 package Pages.Locators;
 
 import Pages.Steps.CouponSteps;
+import Pages.Steps.DashboardSteps;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -10,7 +11,6 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 import static helper.SelenideHelper.SECONDS;
@@ -56,11 +56,19 @@ public class DashboardLocators {
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
 
-    protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__more-wrap']");
+    protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__more-wrap'][1]");
+
+    protected SelenideElement moreBetsIcon = dashboard.$x("descendant::span[@class='scoreboard-nav__btn-label'][1]");
+
+    @Step("Открыть список со всеми ставками")
+    public DashboardSteps openMoreBetsMenu() {
+        moreBetsMenu.shouldBe(visible).click();
+        return new DashboardSteps();
+    }
 
     @Step("Даблклик по коэффицинету")
     public CouponSteps doubleClickCoefficient() {
-        coefficient.doubleClick();
+        coefficient.shouldBe(visible).doubleClick();
         return new CouponSteps();
     }
 
@@ -69,7 +77,7 @@ public class DashboardLocators {
     }
 
     public CouponSteps setCoefficient() {
-        coefficient.click();
+        coefficient.shouldBe(visible).click();
         return new CouponSteps();
     }
 
@@ -93,6 +101,20 @@ public class DashboardLocators {
         return text;
     }
 
+    public String getCoefficientData(int number) {
+        return coefficients.get(number).getText();
+    }
+
+    public String getBetsNumber() {
+        String text = moreBetsMenu.getText();
+        return text;
+    }
+
+    public String getIconNumber() {
+        String text = moreBetsIcon.getText();
+        return text;
+    }
+
     public void isDashboardVisible() {
         dashboard.shouldBe(visible, Duration.ofSeconds(SECONDS));
     }
@@ -105,9 +127,6 @@ public class DashboardLocators {
         coefficient.scrollIntoView("false");
     }
 
-    public String getCoefficientData(int number) {
-        return coefficients.get(number).getText();
-    }
 
     public List<SelenideElement> getDropdownElements() {
         List<SelenideElement> dropdownElements = Arrays.asList(dropDownX, dropDown12,

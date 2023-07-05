@@ -16,7 +16,7 @@ public interface PropertiesReader extends org.aeonbits.owner.Config {
     @Config.Key("BASE_URL")
     String baseUrl();
 
-    @Config.Key("size")
+    @Config.Key("SIZE")
     String size();
 
     @Config.Key("DRIVER_MANAGER_ENABLED")

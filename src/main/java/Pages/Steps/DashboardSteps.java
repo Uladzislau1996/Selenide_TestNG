@@ -11,6 +11,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 import static helper.SelenideHelper.SECONDS;
+import static org.testng.Assert.assertTrue;
 
 public class DashboardSteps extends DashboardLocators {
 
@@ -79,6 +80,13 @@ public class DashboardSteps extends DashboardLocators {
         for (SelenideElement element : getDropdownElements()) {
             element.shouldBe(Condition.enabled);
         }
+    }
+
+    @Step("Сравнить кол-во ставок в кнопке moreBets с кол-вом ставок в раскрывающимся списке")
+    public DashboardSteps compareBetsNumber() {
+        assertTrue(getBetsNumber().contains(getIconNumber()), "Не совпадает кол-во ставокв в кнопке moreBets" +
+                "с кол-вом в раскрывающимся списке");
+        return this;
     }
 
     @Step("В зависимости от полученного значение кликаем на коэффициент")

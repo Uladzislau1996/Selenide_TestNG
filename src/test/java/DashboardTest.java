@@ -10,7 +10,9 @@ public class DashboardTest extends BaseTest {
     @Description("Проверка данных в дашборде")
     public void testDashboard() {
         dashboard.assertCoefficientTitleText()
-                .checkDropdownMenu();
+                 .checkDropdownMenu()
+                 .openMoreBetsMenu()
+                 .compareBetsNumber();
     }
 
 }

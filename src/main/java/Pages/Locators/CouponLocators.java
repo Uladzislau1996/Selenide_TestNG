@@ -41,18 +41,18 @@ public class CouponLocators {
 
 
     public void openDropDown() {
-        dropDown.click();
+        dropDown.shouldBe(visible).click();
     }
 
     @Step("очистить купон")
     public CouponSteps clearCoupon() {
-        clearButton.click();
+        clearButton.shouldBe(visible).click();
         return new CouponSteps();
     }
 
     @Step("Удалить ставку")
     public CouponSteps deleteRate() {
-        deleteRateButton.click();
+        deleteRateButton.shouldBe(visible).click();
         return new CouponSteps();
     }
 
