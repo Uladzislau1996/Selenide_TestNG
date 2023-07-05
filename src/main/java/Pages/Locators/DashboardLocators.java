@@ -55,11 +55,8 @@ public class DashboardLocators {
             .$x("descendant::li[@title='Индивидуальный тотал 2']");
 
     protected ElementsCollection coefficients = dashboard.$$x("descendant::span[@class='c-bets__inner']");
-
     protected SelenideElement moreBetsButton = dashboard.$x("descendant::div[@class='c-events__more-wrap'][1]");
-
     protected SelenideElement moreBetsIcon = dashboard.$x("descendant::span[@class='scoreboard-nav__btn-label'][1]");
-
     protected SelenideElement moreBetsMenu = dashboard.$x("descendant::div[@class='c-events__moreEvs']");
 
 
